@@ -16,17 +16,16 @@ import { Link } from "react-router-dom";
 import "react-pro-sidebar/dist/css/styles.css";
 import "./Header.css";
 
-const Header = () => {
-  const [menuCollapse, setmenuCollapse] = useState(false);
-  const [activeItem, setactiveItem] = useState(null);
-  const menuIconClick = () => {
-    menuCollapse ? setmenuCollapse(false) : setmenuCollapse(true);
-  };
-  const clickMenuItem = (menuItem) =>{
-    setactiveItem(menuItem);
-  };
+const [menuCollapse, setmenuCollapse] = useState(false);
+const [activeItem, setactiveItem] = useState(null);
+const menuIconClick = () => {
+   menuCollapse ? setmenuCollapse(false) : setmenuCollapse(true);
+};
+const clickMenuItem = (menuItem) =>{
+   setactiveItem(menuItem);
+};
+  export const Header = () =>{
   return (
-    <>
       <div id="header">
       <ProSidebar collapsed={menuCollapse}>
           <SidebarHeader>
@@ -47,7 +46,6 @@ const Header = () => {
           </Menu>
         </ProSidebar> 
       </div>
-    </>
   );
 };
 
