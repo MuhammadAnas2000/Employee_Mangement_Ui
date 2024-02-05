@@ -11,6 +11,7 @@ import { Link } from "react-router-dom";
 
 import "react-pro-sidebar/dist/css/styles.css";
 import "./Header.css";
+import NavBar from "../Navbar/NavBar";
 
 export const Header = () => {
   const [menuCollapse, setmenuCollapse] = useState(false);
@@ -24,7 +25,14 @@ export const Header = () => {
 
   return (
     <div id="header">
-      <ProSidebar collapsed={menuCollapse}>
+      <div style={{ display: 'flex' }}>
+        <div id="navbar" style={{ zIndex: 1000 }}>
+          {<NavBar />}
+        </div>
+      </div>
+      <div style={{ paddingTop: '20px' }}>
+
+      <ProSidebar collapsed={menuCollapse} style={{ position: 'fixed',left: 0 }}>
         <SidebarHeader>
           <div className="logotext">
             <p>{menuCollapse ? "Logo" : "Logo"}</p>
@@ -80,6 +88,7 @@ export const Header = () => {
           </MenuItem>
         </Menu>
       </ProSidebar>
+      </div>
     </div>
   );
 };

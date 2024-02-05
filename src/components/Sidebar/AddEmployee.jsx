@@ -36,7 +36,7 @@ function AddEmployee() {
 
   return (
     <div>
-      <div className="form">
+      <div className="form menuItems">
         <h2>Add Employee Details</h2>
         <div className="form-body">
           <div className="username">
