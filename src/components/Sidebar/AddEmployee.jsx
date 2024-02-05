@@ -1,5 +1,5 @@
 import { useState } from "react";
-import "./style.css";
+import "../../components/common/common.css";
 function AddEmployee() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
