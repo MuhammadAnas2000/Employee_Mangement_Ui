@@ -20,19 +20,22 @@ export const Header = () => {
     menuCollapse ? setmenuCollapse(false) : setmenuCollapse(true);
   };
   const clickMenuItem = (menuItem) => {
+    console.log("Before state change:", menuCollapse, activeItem);
     setactiveItem(menuItem);
+    console.log("After state change:", menuCollapse, activeItem);
   };
 
   return (
     <div id="header">
-      <div style={{ display: 'flex' }}>
-        <div id="navbar" style={{ zIndex: 1000 }}>
-          {<NavBar />}
+      
+      {<div style={{ display: 'flex' }}>
+        <div id="navbar">
+          <NavBar />
         </div>
-      </div>
-      <div style={{ paddingTop: '20px' }}>
+      </div> }
 
-      <ProSidebar collapsed={menuCollapse} style={{ position: 'fixed',left: 0 }}>
+            
+      <ProSidebar  collapsed={menuCollapse} style={{ position: 'fixed', left: 0, height: '100%' }}>
         <SidebarHeader>
           <div className="logotext">
             <p>{menuCollapse ? "Logo" : "Logo"}</p>
@@ -49,9 +52,7 @@ export const Header = () => {
             onClick={() => clickMenuItem("DASHBOARD")}
           >
             {" "}
-            <Link to="/">
-              <span className="sidebarText">DASHBOARD</span>
-            </Link>
+            <span className="sidebarText">DASHBOARD</span>
           </MenuItem>
           <MenuItem
             active={activeItem == "addemp"}
@@ -88,7 +89,7 @@ export const Header = () => {
           </MenuItem>
         </Menu>
       </ProSidebar>
-      </div>
+      
     </div>
   );
 };

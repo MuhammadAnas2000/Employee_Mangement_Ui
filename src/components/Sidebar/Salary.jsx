@@ -1,5 +1,5 @@
 import React from 'react';
-
+import "../../components/common/common.css";
 function Salary() {
   return (
       <div className ="menuItems" >
