@@ -11,14 +11,16 @@ import { Link } from "react-router-dom";
 
 import "react-pro-sidebar/dist/css/styles.css";
 import "./Header.css";
-import NavBar from "../Navbar/NavBar";
 
-export const Header = () => {
+const icons = [<FiHome />, <FaList />, <RiPencilLine />, <RiPencilLine />, <BiCog />];
+export const Header = ({ headings }) => {
   const [menuCollapse, setmenuCollapse] = useState(false);
   const [activeItem, setactiveItem] = useState(0);
+
   const menuIconClick = () => {
     menuCollapse ? setmenuCollapse(false) : setmenuCollapse(true);
   };
+
   const clickMenuItem = (menuItem) => {
     console.log("Before state change:", menuCollapse, activeItem);
     setactiveItem(menuItem);
@@ -27,15 +29,7 @@ export const Header = () => {
 
   return (
     <div id="header">
-      
-      {<div style={{ display: 'flex' }}>
-        <div id="navbar">
-          <NavBar />
-        </div>
-      </div> }
-
-            
-      <ProSidebar  collapsed={menuCollapse} style={{ position: 'fixed', left: 0, height: '100%' }}>
+      <ProSidebar collapsed={menuCollapse} style={{ position: 'fixed', left: 0, height: '100%' }}>
         <SidebarHeader>
           <div className="logotext">
             <p>{menuCollapse ? "Logo" : "Logo"}</p>
@@ -45,51 +39,34 @@ export const Header = () => {
             {menuCollapse ? <FiArrowRightCircle /> : <FiArrowLeftCircle />}
           </div>
         </SidebarHeader>
+
         <Menu iconShape="square">
-          <MenuItem
-            active={activeItem == "DASHBOARD"}
-            icon={<FiHome />}
-            onClick={() => clickMenuItem("DASHBOARD")}
-          >
-            {" "}
-            <span className="sidebarText">DASHBOARD</span>
-          </MenuItem>
-          <MenuItem
-            active={activeItem == "addemp"}
-            icon={<FaList />}
-            onClick={() => clickMenuItem("addemp")}
-          >
-            {" "}
-            <Link to="/AddEmployee">
-              <span className="sidebarText">Add Employee</span>
-            </Link>
-          </MenuItem>
-          <MenuItem
-            active={activeItem == "LeaveReport"}
-            icon={<RiPencilLine />}
-            onClick={() => clickMenuItem("LeaveReport")}
-          >
-            <span className="sidebarText">Leave Report</span>
-          </MenuItem>
-          <MenuItem
-            active={activeItem == "SalaryReport"}
-            icon={<RiPencilLine />}
-            onClick={() => clickMenuItem("SalaryReport")}
-          >
-            <span className="sidebarText">Salary Report</span>
-          </MenuItem>
-          <MenuItem
-            active={activeItem == "addsal"}
-            icon={<BiCog />}
-            onClick={() => clickMenuItem("addsal")}
-          >
-            <Link to="/addsal">
-              <span className="sidebarText">Add Salary</span>
-            </Link>
-          </MenuItem>
+          {headings.map((headings, index) => (
+
+            <MenuItem
+              active={activeItem == headings}
+              icon={icons[index]}
+              onClick={() => clickMenuItem(headings)}
+            >
+              {" "}
+              {index == 1 ? (
+                <Link to="/AddEmployee">
+                  <span className="sidebarText">{headings}</span>
+                </Link>
+              ) : index == 4 ? (
+                <Link to="/addsal">
+                  <span className="sidebarText">{headings}</span>
+                </Link>
+              ) :
+                <Link to="/">
+                  <span className="sidebarText">{headings}</span>
+                </Link>
+              }
+            </MenuItem>
+          ))}
         </Menu>
       </ProSidebar>
-      
+
     </div>
   );
 };
