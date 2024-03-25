@@ -1,6 +1,5 @@
 import React from 'react'
 import SideBar from '../../components/SideBar/sideBar.jsx'
-import Navbar from '../../components/Navbar/Navbar.jsx'
 import { EmployeeSideBarData } from '../../components/SideBar/sideBarData.jsx'
 import Select from 'react-select';
 import "./ApplyLeave.css"
@@ -21,7 +20,7 @@ function ApplyLeave() {
             <div className="card">
               <div className="card-body">
                 <h5 className="card-title">Leave Application</h5>
-                <p className="card-text">Dashboard > Apply For Leave</p>
+                <p className="card-text">Dashboard Apply For Leave</p>
             </div>       
           </div>
           <div className="card p-3 mt-3">
