@@ -1,38 +1,89 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import "../../components/common/common.css";
 function AddEmployee() {
-  const [firstName, setFirstName] = useState("");
-  const [lastName, setLastName] = useState("");
+  const [first_name, setfirst_name] = useState("");
+  const [last_name, setlast_name] = useState("");
+  const [cnic, setcnic] = useState("");
   const [age, setage] = useState("");
+  const [phone, setphone] = useState("");
   const [email, setEmail] = useState("");
-  const [pass, setpass] = useState("");
+  const [qualification,setqualification] = useState("");
+  const [password, setpassword] = useState("");
   const [cnfrmPass, setcnfrmPass] = useState("");
+  const [full_name,setfull_name] = useState("");
+
+  
+  useEffect(() => {
+    setfull_name(`${first_name} ${last_name}`);
+  }, [first_name, last_name]);
 
   const handleInputChange = (e) => {
     const { id, value } = e.target;
-    if (id === "firstName") {
-      setFirstName(value);
+    if (id === "first_name") {
+      setfirst_name(value);
     }
-    if (id === "lastName") {
-      setLastName(value);
+    if (id === "last_name") {
+      setlast_name(value);
+    }
+    if (id === "cnic") {
+      const filterVal = value.replace(/\D/g,'');
+      setcnic(filterVal);
     }
     if (id === "age") {
       setage(value);
     }
+    if (id === "phone") {
+      const filterVal = value.replace(/[a-zA-Z]/g,'');
+      setphone(filterVal);
+    }
     if (id === "email") {
       setEmail(value);
     }
+    if (id === "qualification") {
+      setqualification(value);
+    }
     if (id === "password") {
-      setpass(value);
+      setpassword(value);
     }
     if (id === "confirmPassword") {
       setcnfrmPass(value);
     }
   };
 
-  const handleSubmit = () => {
-    console.log(firstName, lastName, age, email, pass, cnfrmPass);
+  const handleSubmit = async () => {
+      const userData = {
+        first_name,
+        last_name,
+        cnic,
+        age,
+        phone,
+        email,
+        qualification,
+        password,
+        full_name,
+      };
+
+      try {
+          const reponse = await fetch("http://localhost:8080/ems/admin/create",{
+          method: "POST",
+          headers: {
+              "Content-Type" : "application/json"
+          },
+          body: JSON.stringify(userData),
+        });
+        window.location.reload();
+        if(Response.ok){
+          console.log("User data sent successfully");
+        }
+        else{
+          console.log("Failed to send user data");
+        }
+
+      } catch (error) {
+        console.error("Error sending user data:", error);
+      }
   };
+
 
   return (
     <div>
@@ -40,30 +91,44 @@ function AddEmployee() {
         <h2>Add Employee Details</h2>
         <div className="form-body">
           <div className="username">
-            <label className="formLabel" htmlFor="firstName">
+            <label className="formLabel" htmlFor="first_name">
               First Name
             </label>
             <input
               className="formInput"
               type="text"
-              value={firstName}
+              value={first_name}
               onChange={handleInputChange}
-              id="firstName"
+              id="first_name"
               placeholder="First Name"
             />
           </div>
 
           <div className="lastname">
-            <label className="formLabel" htmlFor="lastName">
+            <label className="formLabel" htmlFor="last_name">
               Last Name
             </label>
             <input
               className="formInput"
               type="text"
-              value={lastName}
+              value={last_name}
               onChange={(e) => handleInputChange(e)}
-              id="lastName"
+              id="last_name"
               placeholder="Last Name"
+            />
+          </div>
+
+          <div className="cnic">
+            <label className="formLabel" htmlFor="cnic">
+              CNIC
+            </label>
+            <input
+              className="formInput"
+              type="text"
+              value={cnic}
+              onChange={(e) => handleInputChange(e)}
+              id="cnic"
+              placeholder="Cnic"
             />
           </div>
 
@@ -81,6 +146,20 @@ function AddEmployee() {
             />
           </div>
 
+          <div className="phone">
+            <label className="formLabel" htmlFor="phone">
+              phone
+            </label>
+            <input
+              className="formInput"
+              type="text"
+              value={phone}
+              onChange={(e) => handleInputChange(e)}
+              id="phone"
+              placeholder="phone"
+            />
+          </div>
+          
           <div className="email">
             <label className="formLabel" htmlFor="email">
               Email
@@ -95,6 +174,20 @@ function AddEmployee() {
             />
           </div>
 
+          <div className="qualification">
+            <label className="formLabel" htmlFor="qualification">
+            Qualification
+            </label>
+            <input
+              className="formInput"
+              type="text"
+              value={qualification}
+              onChange={(e) => handleInputChange(e)}
+              id="qualification"
+              placeholder="qualification"
+            />
+          </div>
+
           <div className="password">
             <label className="formLabel" htmlFor="password">
               Password
@@ -102,7 +195,7 @@ function AddEmployee() {
             <input
               className="formInput"
               type="password"
-              value={pass}
+              value={password}
               onChange={(e) => handleInputChange(e)}
               id="password"
               placeholder="Password"
