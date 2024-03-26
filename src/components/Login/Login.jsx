@@ -10,7 +10,7 @@ import { ToastContainer, toast } from "react-toastify";
 export const Login = () => {
   
   const [credentials, setData] = useState({
-    email: "",
+    username: "",
     password: "",
   });
 
@@ -34,7 +34,7 @@ export const Login = () => {
             <div className="inputs-login">
                   <div className="input">
                       <img src={email_icon} alt="" />
-                      <input name="email" type="email" placeholder="Email" onChange={(e) => onInputChange(e)}/>
+                      <input name="username" type="text" placeholder="User Name" onChange={(e) => onInputChange(e)}/>
                   </div>
                   <div  className="input">
                       <img src={password_icon} alt=""  />
