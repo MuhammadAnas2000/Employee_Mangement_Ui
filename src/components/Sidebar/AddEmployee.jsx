@@ -1,5 +1,12 @@
 import { useState } from "react";
 import "../../components/common/common.css";
+import Header from "../../components/Header/Header.jsx";
+import NavBar from "../../components/Navbar/NavBar.jsx";
+import APPLICATION_ROUTES from "../../components/common/routesUtil.jsx";
+
+import 'bootstrap/dist/css/bootstrap.min.css';
+
+const headings = ["DASHBOARD", "Add Employee", "Leave Report", "Salary Report", "Add Salary"];
 function AddEmployee() {
   const [firstName, setFirstName] = useState("");
   const [lastName, setLastName] = useState("");
@@ -33,109 +40,50 @@ function AddEmployee() {
   const handleSubmit = () => {
     console.log(firstName, lastName, age, email, pass, cnfrmPass);
   };
-
-  return (
-    <div>
-      <div className="form">
-        <h2>Add Employee Details</h2>
-        <div className="form-body">
-          <div className="username">
-            <label className="formLabel" htmlFor="firstName">
-              First Name
-            </label>
-            <input
-              className="formInput"
-              type="text"
-              value={firstName}
-              onChange={handleInputChange}
-              id="firstName"
-              placeholder="First Name"
-            />
-          </div>
-
-          <div className="lastname">
-            <label className="formLabel" htmlFor="lastName">
-              Last Name
-            </label>
-            <input
-              className="formInput"
-              type="text"
-              value={lastName}
-              onChange={(e) => handleInputChange(e)}
-              id="lastName"
-              placeholder="Last Name"
-            />
-          </div>
-
-          <div className="age">
-            <label className="formLabel" htmlFor="age">
-              Age
-            </label>
-            <input
-              className="formInput"
-              type="number"
-              value={age}
-              onChange={(e) => handleInputChange(e)}
-              id="age"
-              placeholder="age"
-            />
-          </div>
-
-          <div className="email">
-            <label className="formLabel" htmlFor="email">
-              Email
-            </label>
-            <input
-              className="formInput"
-              type="email"
-              value={email}
-              onChange={(e) => handleInputChange(e)}
-              id="email"
-              placeholder="email"
-            />
-          </div>
-
-          <div className="password">
-            <label className="formLabel" htmlFor="password">
-              Password
-            </label>
-            <input
-              className="formInput"
-              type="password"
-              value={pass}
-              onChange={(e) => handleInputChange(e)}
-              id="password"
-              placeholder="Password"
-            />
-          </div>
-
-          <div className="confirm-password">
-            <label className="formLabel" htmlFor="confirmPassword">
-              Confirm Password
-            </label>
-            <input
-              className="formInput"
-              type="password"
-              value={cnfrmPass}
-              onChange={(e) => handleInputChange(e)}
-              id="confirmPassword"
-              placeholder="Confirm Password"
-            />
-          </div>
-
-          <div className="footer">
-            <button
-              onClick={() => handleSubmit()}
-              type="submit"
-              className="btn"
-            >
-              Register
-            </button>
+  return(
+    <div className="container-fluid">
+    <div className="col-md-3">
+      <Header headings={headings} />
+    </div>
+    <div className="col-md-9">
+      <div className="main">
+        <NavBar />
+        <div className="form">
+          <h2>Add Employee Details</h2>
+          <div className="form-body">
+            <div className="username">
+              <label className="formLabel" htmlFor="firstName"> First Name </label>
+              <input className="formInput" type="text" value={firstName} onChange={handleInputChange} id="firstName" placeholder="First Name" />
+            </div>
+            <div className="lastname">
+              <label className="formLabel" htmlFor="lastName"> Last Name </label>
+              <input className="formInput" type="text" value={lastName} onChange={(e)=> handleInputChange(e)} id="lastName" placeholder="Last Name" />
+            </div>
+            <div className="age">
+              <label className="formLabel" htmlFor="age"> Age </label>
+              <input className="formInput" type="number" value={age} onChange={(e)=> handleInputChange(e)} id="age" placeholder="age" />
+            </div>
+            <div className="email">
+              <label className="formLabel" htmlFor="email"> Email </label>
+              <input className="formInput" type="email" value={email} onChange={(e)=> handleInputChange(e)} id="email" placeholder="email" />
+            </div>
+            <div className="password">
+              <label className="formLabel" htmlFor="password"> Password </label>
+              <input className="formInput" type="password" value={pass} onChange={(e)=> handleInputChange(e)} id="password" placeholder="Password" />
+            </div>
+            <div className="confirm-password">
+              <label className="formLabel" htmlFor="confirmPassword"> Confirm Password </label>
+              <input className="formInput" type="password" value={cnfrmPass} onChange={(e)=> handleInputChange(e)} id="confirmPassword" placeholder="Confirm Password" />
+            </div>
+            <div className="footer">
+              <button onClick={()=> handleSubmit()} type="submit" className="btn" > Register </button>
+            </div>
           </div>
         </div>
       </div>
     </div>
-  );
+  </div> 
+); 
 }
 
 export default AddEmployee;
