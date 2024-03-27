@@ -1,15 +1,30 @@
-.form {
+.form, .menuItems{
     background-color: white;
     border-radius: 5px;
-    width: 550px;
+    width: 50%;
     margin: 20px auto;
     padding: 20px;
     height: 550px;
 }
-
-.form-body {
+.form-body{
     text-align: left;
     padding: 20px 10px;
+}
+
+.form-body > *{
+    padding: 5px;
+}
+
+.formLabel{
+    width: 40%;
+}
+
+.form_input{
+    width: 60%;
+}
+
+.footer{
+    text-align: center;
 }
 
 
@@ -18,7 +33,7 @@ a:hover {
 }
 
 body {
-    background-color: #efeae2;
+    background-color:white;
     margin: 0;
     height: 100%;
     width:  100%;
