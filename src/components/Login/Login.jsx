@@ -1,5 +1,4 @@
 import { useState, React } from "react";
-import 'bootstrap/dist/css/bootstrap.min.css'
 import './Login.css'
 import user_icon from  '../../assets/person.png'
 import email_icon from  '../../assets/email.png'

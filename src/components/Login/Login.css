@@ -2,7 +2,6 @@
     display: flex;
     flex-direction: column;
     margin:auto;
-    background: #fff;
     align-content: center;
     width: 550px;
     margin-top:  50px;
@@ -11,6 +10,7 @@
 .wrapper-login{
     height: 100%;
     width: 100%;
+    background: #fcf5eb;
 }
 
 .header-login{
