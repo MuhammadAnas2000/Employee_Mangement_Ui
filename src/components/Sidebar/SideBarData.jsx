@@ -11,8 +11,8 @@ export const EmployeeSideBarData = [
     cName: 'side-text'
   },
   {
-    title: 'Reports',
-    path: '/Salary',
+    title: 'Apply Leave',
+    path: '/Employee/Leave/Apply',
     icon: <IoIcons.IoIosPaper />,
     cName: 'side-text'
   }

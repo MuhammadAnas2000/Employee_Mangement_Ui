@@ -21,9 +21,14 @@
     width:100%;
     margin-top:30px
 }
+.icon{
+    color:#9d9300;
+    font-size:23px;
+    font-weight:700;
+}
 .text{
     color:#9d9300;
-    font-size:48px;
+    font-size:25px;
     font-weight:700;
 }
 .underline{
@@ -63,6 +68,6 @@
 .login_btn{
     height: 80px;
     width:480px;
-    background: #9d9300;
+    background: var(--main-btn-color);
     color: #ffffff;
 }

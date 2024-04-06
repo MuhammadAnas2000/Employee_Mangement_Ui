@@ -1,3 +1,8 @@
+*{
+  font-family: 'Poppins', sans-serif !important;
+  font-weight: 300;
+  font-style: normal;
+}
 .form, .menuItems{
     background-color: white;
     border-radius: 5px;
@@ -28,7 +33,6 @@
 }
 
 body {
-  font-family: 'Poppins', sans-serif !important;
   background-color:white;
   margin: 0;
   height: 100%;
@@ -57,10 +61,11 @@ button:focus, button:focus-visible {
     line-height: 1.1;
   }
   @media (prefers-color-scheme: light) {
-    :root {
+    :root { 
       background-color: #fcf5eb !important;
       --main-side-nav-color: #c07d02;
       --main-a-hover-color:#c9780f;
+      --main-btn-color: #c07d02;
       line-height: 1.5;
     }
     button {
@@ -68,6 +73,9 @@ button:focus, button:focus-visible {
     }
     
   }
+  .wrapper{
+    display:flex
+   }
   
   
   
