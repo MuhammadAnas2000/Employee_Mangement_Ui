@@ -1,12 +1,17 @@
-import {toast } from "react-toastify";
 import {loginUser } from '../../service/authService.js';
-
-export function doLogin(credentials){
-    var resp = loginUser(credentials);
-    resp
-    .then((response) => response.data)
-    .then((data) => (data.ok ? notify("You login to your account successfully", "success") : notify("Your password or your email is wrong", "error")));
-}
-export function validate(){
-
+import {showSuccessMessage,showErrorMessage} from '../../util/ToastUtils.jsx';
+export async function doLogin(credentials) {
+    var response = await loginUser(credentials);
+    var userData = response.data.response;
+    var responseCode = response.data.responseCode;
+    try {
+        if(userData !=null && responseCode!="0"){
+            showSuccessMessage('Login Successful.');
+        }else{
+            showErrorMessage("Invalid Password or Email.");
+        }    
+        } catch (error) {
+            showErrorMessage("Something Went Wrong"+error);
+      }
+    return userData;
 }
